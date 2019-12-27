@@ -1,49 +1,47 @@
-let firstNumber = +prompt("Enter a number");
-let operator = prompt("Enter an operator");
-let seconfNumber = +prompt("Enter another number");
+let displayValue = document.getElementById("display");
+let resultShowed = false;
+let resultValue = "";
 
-// OR
-// let firstNumber = Number(prompt("Enter first number"));
-// let seconfNumber = Number(prompt("Enter second number"));
+function addOperator(operator) {
+	if (!(resultValue.value == "")) {
+		resultValue += operator;
+		resultShowed = true;
+	}
+}
 
-switch(operator){
-	case "+":
-	 alert(sum(firstNumber, seconfNumber))
-	 break;
-	 case "-":
-	 alert(subtract(firstNumber, seconfNumber))
-	 break;
-	 case "*":
-	 alert(multiply(firstNumber, seconfNumber))
-	 break;
-	 case "/":
-	 alert(divide(firstNumber, seconfNumber))
-	 break;
-	 default:
-	 alert("That's not an operator");
+function display(symbol) {
+	if (resultShowed){
+		clearAfterResult();
+	}
+	if (displayValue.value == 0) {
+		displayValue.value = symbol;
+	} else {
+		displayValue.value += symbol;
+	}
+	resultValue += symbol;
 
 }
 
-function sum(num1, num2){
-	 return num1+num2;
-}
-function subtract(num1, num2){
-	 return num1-num2;
-}
-function multiply(num1, num2){
-	 return num1*num2;
-}
-function divide(num1, num2){
-	 return num1/num2;
+function result(){
+
+	displayValue.value = eval(resultValue);
+	resultShowed = true;
+	resultValue = "";
 }
 
- // alert(sum(firstNumber, seconfNumber));
+function clearAll() {
+	displayValue.value = "0";
+}
 
-// let age= +prompt("enter your age");
-// let country = prompt("enter your country").toLowerCase; //so we can right us and US
+function deleteOne() {
+	displayValue.value = displayValue.value.slice(0, -1);
+	resultShowed = false;
+	if(displayValue.value.length < 1){
+		displayValue.value = "0";
+	}
+}
 
-
-
-// if(country=="us" && age>=21 || country!="us" && age>=18){
-// 	alert("Have a beer");
-// } else alert("Have a soda");
+function clearAfterResult() {
+	displayValue.value = "";
+	resultShowed = false;
+}

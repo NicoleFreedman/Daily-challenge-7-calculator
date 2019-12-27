@@ -3,6 +3,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-size: 20px;
 }
 
 body{
@@ -12,8 +13,12 @@ body{
 	align-items: center;
 }
 
-.result{
+#display{
 	background: #000;
+	color: #fff;
+    text-align: right;
+	font-size: 1.5em;
+	padding: 0 10px;
 	grid-column: 1/ span 4;
 }
 
